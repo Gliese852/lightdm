@@ -2,7 +2,7 @@
 # partially borrowed from freeciv qt m4 scripts
 
 dnl Qt5
-AC_DEFUN([FC_QT5_IF_QT5_MOC],
+AC_DEFUN([QT5_IF_QT5_MOC],
     AS_IF([$1 -v >/dev/null 2>/dev/null &&
         (test "`$1 -v 2<&1 | grep -o 'Qt [[[0-9]]]\+'`" = "Qt 5" ||
          test "`$1 -v 2<&1 | grep -o 'moc [[[0-9]]]\+'`" = "moc 5" ||
@@ -10,11 +10,11 @@ AC_DEFUN([FC_QT5_IF_QT5_MOC],
         [$2]))
 
 dnl Set MOCCMD to $1 if it is the Qt 5 "moc".
-AC_DEFUN([FC_QT5_TRY_MOC],
-    [FC_QT5_IF_QT5_MOC([$1], [MOCCMD="$1"])])
+AC_DEFUN([QT5_TRY_MOC],
+    [QT5_IF_QT5_MOC([$1], [MOCCMD="$1"])])
 
 dnl If a usable moc command is found set $1
-AC_DEFUN([FC_QT5_VALIDATE_MOC], [
+AC_DEFUN([QT5_VALIDATE_MOC], [
     AC_MSG_CHECKING([the Qt 5 moc command])
 
     dnl Try to find a Qt 5 'moc'
@@ -22,7 +22,7 @@ AC_DEFUN([FC_QT5_VALIDATE_MOC], [
         [for mocpath in "moc" "qtchooser -run-tool=moc -qt=5" "moc-qt5"
         do
             if test "x$MOCCMD" = "x" ; then
-                FC_QT5_TRY_MOC([$mocpath])
+                QT5_TRY_MOC([$mocpath])
             fi
         done
         AS_IF([test "x$MOCCMD" = "x"],
@@ -33,7 +33,7 @@ AC_DEFUN([FC_QT5_VALIDATE_MOC], [
 
 
 dnl Qt6
-AC_DEFUN([FC_QT6_IF_QT6_MOC],
+AC_DEFUN([QT6_IF_QT6_MOC],
     AS_IF([$1 -v >/dev/null 2>/dev/null &&
         (test "`$1 -v 2<&1 | grep -o 'Qt [[[0-9]]]\+'`" = "Qt 6" ||
          test "`$1 -v 2<&1 | grep -o 'moc [[[0-9]]]\+'`" = "moc 6" ||
@@ -41,11 +41,11 @@ AC_DEFUN([FC_QT6_IF_QT6_MOC],
         [$2]))
 
 dnl Set MOCCMD to $1 if it is the Qt 6 "moc".
-AC_DEFUN([FC_QT6_TRY_MOC],
-    [FC_QT6_IF_QT6_MOC([$1], [MOCCMD="$1"])])
+AC_DEFUN([QT6_TRY_MOC],
+    [QT6_IF_QT6_MOC([$1], [MOCCMD="$1"])])
 
 dnl If a usable moc command is found set $1
-AC_DEFUN([FC_QT6_VALIDATE_MOC], [
+AC_DEFUN([QT6_VALIDATE_MOC], [
     AC_MSG_CHECKING([the Qt 6 moc command])
 
     dnl Try to find a Qt 6 'moc'
@@ -58,7 +58,7 @@ AC_DEFUN([FC_QT6_VALIDATE_MOC], [
                         "$libdir/qt6/moc" "$libdir/qt6/libexec/moc"
         do
             if test "x$MOCCMD" = "x" ; then
-                FC_QT6_TRY_MOC([$mocpath])
+                QT6_TRY_MOC([$mocpath])
             fi
         done
         AS_IF([test "x$MOCCMD" = "x"],

@@ -105,7 +105,7 @@ if test x"$enable_liblightdm_qt5" != "xno"; then
       fi
     ])
 
-    FC_QT5_VALIDATE_MOC(MOC5)
+    QT5_VALIDATE_MOC(MOC5)
     if test x$MOC5 = x; then
         compile_liblightdm_qt5=no
         if test "x$enable_liblightdm_qt5" != xauto; then
@@ -139,7 +139,7 @@ if test x"$enable_liblightdm_qt6" != "xno"; then
       fi
     ])
 
-    FC_QT6_VALIDATE_MOC(MOC6)
+    QT6_VALIDATE_MOC(MOC6)
     if test x$MOC6 = x; then
         compile_liblightdm_qt6=no
         if test "x$enable_liblightdm_qt6" != xauto; then
